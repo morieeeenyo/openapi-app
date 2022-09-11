@@ -7,6 +7,28 @@ info:
   summary: The books Mori has and Reservation to them
 servers:
   - url: 'http://localhost:3000'
-paths: {}
+paths:
+  /books:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  isbn:
+                    type: string
+                  description:
+                    type: string
+              examples:
+                example-1:
+                  value: {}
+      operationId: get-books
 components:
   schemas: {}
