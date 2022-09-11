@@ -20,21 +20,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  titile:
-                    type: string
-                    description: book title
-                  isbn:
-                    type: string
-                    description: book unique code
-                  description:
-                    type: string
-                    description: book description
-                required:
-                  - titile
-                  - isbn
-                  - description
+                type: array
+                items:
+                  $ref: '#/components/schemas/book'
       operationId: get-books
     post:
       summary: create book api
@@ -44,4 +32,29 @@ paths:
       responses: {}
       operationId: post-books
 components:
-  schemas: {}
+  schemas:
+    book:
+      title: book
+      x-stoplight:
+        id: mkxzs5koeizai
+      x-tags:
+        - book
+      type: object
+      properties:
+        id:
+          type: string
+          description: primary key
+        title:
+          type: string
+          description: book title
+        isbn:
+          type: string
+          description: book unique code
+        description:
+          type: string
+          description: book description
+      required:
+        - id
+        - title
+        - isbn
+        - description
