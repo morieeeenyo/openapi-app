@@ -1,0 +1,74 @@
+openapi: 3.1.0
+x-stoplight:
+  id: r1uwegvp97ws4
+info:
+  contact:
+    name: API support
+    url: http://www.example.com/support
+    email: support@example.com
+  description: 'The books Mori has and Reservation to them'
+  title: Moritania Library
+  version: '1.0'
+  summary: The books Mori has and Reservation to them
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /books:
+    get:
+      description: 'fetch book list'
+      summary: book list api
+      tags:
+        - books
+        - index
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/book'
+      operationId: get-books
+    post:
+      description: 'register a new book'
+      summary: create book api
+      tags:
+        - books
+        - index
+      responses: 
+        '204': 
+          description: 'Created'
+      operationId: post-books
+components:
+  schemas:
+    book:
+      title: book
+      x-stoplight:
+        id: mkxzs5koeizai
+      x-tags:
+        - book
+      type: object
+      properties:
+        id:
+          type: string
+          description: primary key
+        title:
+          type: string
+          description: book title
+        isbn:
+          type: string
+          description: book unique code
+        description:
+          type: string
+          description: book description
+      required:
+        - id
+        - title
+        - isbn
+        - description
+tags:
+  - name: books
+    description: 'the apis related to book'
+  - name: index
+    description: 'the apis which is used for fetch data list'
