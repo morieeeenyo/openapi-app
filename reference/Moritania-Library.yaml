@@ -10,8 +10,10 @@ servers:
 paths:
   /books:
     get:
-      summary: Your GET endpoint
-      tags: []
+      summary: book list api
+      tags:
+        - books
+        - index
       responses:
         '200':
           description: OK
@@ -20,15 +22,26 @@ paths:
               schema:
                 type: object
                 properties:
-                  title:
+                  titile:
                     type: string
+                    description: book title
                   isbn:
                     type: string
+                    description: book unique code
                   description:
                     type: string
-              examples:
-                example-1:
-                  value: {}
+                    description: book description
+                required:
+                  - titile
+                  - isbn
+                  - description
       operationId: get-books
+    post:
+      summary: create book api
+      tags:
+        - books
+        - index
+      responses: {}
+      operationId: post-books
 components:
   schemas: {}
